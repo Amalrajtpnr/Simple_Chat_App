@@ -3,6 +3,10 @@ import { FiEdit } from "react-icons/fi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { VscSend } from "react-icons/vsc";
 import { GoPaperclip } from "react-icons/go";
+import { BsCamera } from "react-icons/bs";
+import { BsCameraVideo } from "react-icons/bs";
+
+
 import { useEffect, useState } from "react";
 
 interface ChatMessage {
@@ -107,7 +111,7 @@ export default function Home() {
           {chatMessages.map((message) => (
             <div
               key={message.id}
-              className={`w-[500px] min-h-[40%] mb-5 flex flex-row items-start justify-start ${
+              className={`w-[310px] min-h-[40%] mb-8 flex flex-row items-start justify-start sm550:w-[500px] ${
                 message.sender.self ? "" : "flex-row-reverse"
               }`}
             >
@@ -133,13 +137,16 @@ export default function Home() {
             placeholder="Reply to @Rohit Yadav"
             className="w-[80%] h-full outline-none"
           />
-          <GoPaperclip onClick={()=>setPopUp(true)} size={25} />
+          <GoPaperclip onClick={()=>setPopUp(!popUp)} size={25} />
           <VscSend size={25} />
         </div>
       </div>
-      {/* {popUp && (
-        <div className="w-[10%] h-[5%] rounded absolute bottom-0 right-[550px]  bg-green-600">sbbshj</div>
-      )} */}
+      {popUp && (
+        <div className="w-[30%] h-[6%] sm550:w-[10%] sm550:left-[400px] sm550:bottom-[100px]  rounded-[30px] absolute bottom-[60px] left-[230px]  flex flex-row items-center  justify-around  bg-green-600">
+          <BsCamera size={20} />
+          <BsCameraVideo size={20}/>
+        </div>
+      )}
     </div>
   );
 }
